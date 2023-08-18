@@ -32,10 +32,11 @@ public class Player : MonoBehaviour
 
     private bool m_isGround = true;
     private bool m_canMove = true;
-    private bool m_isCounter = false;
+    private bool m_canAttack = true; //playing attack
+
+    private bool m_isCounter = false; //hit counter
     private bool m_isShield = false;
     private bool m_isKnockBack = false;
-    private bool m_isWeakAttack = false;
     
 
     private Rigidbody2D m_rigidbody;
@@ -109,12 +110,12 @@ public class Player : MonoBehaviour
 
     public void WeakAttack()
     {
-        if (m_isWeakAttack == true || m_canMove == false)
+        if (m_canAttack == false)
         {
             return;
         }
 
-        m_isWeakAttack = true;
+        m_canAttack = false;
         m_animator.SetTrigger("WeakAttack");
 
         m_sword.WeakAttack(m_weakAttackCoolTime);
@@ -128,15 +129,15 @@ public class Player : MonoBehaviour
             m_tutorialKeyInput[(int)TutorialInput.LinkAttack].Check();
         }
 
-        Invoke("SetIsWeakAttack", m_weakAttackCoolTime);
+        Invoke(nameof(SetIsAttackFalse), m_weakAttackCoolTime);
     }
 
     public void StrongAttack()
     {
-        if (m_canMove == false || m_isWeakAttack == true)
+        if (m_canAttack == false)
             return;
 
-        m_canMove = false;
+        m_canAttack = false;
         //m_animator.SetBool("StrongAttack", true);
         m_animator.SetTrigger("StrongAttack");
 
@@ -145,17 +146,17 @@ public class Player : MonoBehaviour
             m_tutorialKeyInput[(int)TutorialInput.StrongAttack].Check();
         }
 
-        Invoke("SetMovable", m_strongAttackCoolTime);
+        Invoke(nameof(SetIsAttackFalse), m_strongAttackCoolTime);
 
         m_sword.StrongAttack(m_strongAttackCoolTime);
     }
 
     public void Counter()
     {
-        if (m_canMove == false)
+        if (m_canAttack == false)
             return;
 
-        m_canMove = false;
+        m_canAttack = false;
         m_isCounter = true;
 
         if (m_tutorialKeyInput[(int)TutorialInput.Counter].isCheck() == false)
@@ -164,7 +165,7 @@ public class Player : MonoBehaviour
         }
 
         m_animator.SetTrigger("Counter");
-        Invoke("SetMovable", m_counterCoolTime);
+        Invoke(nameof(SetIsAttackFalse), m_counterCoolTime);
         Invoke("SetUncountable", m_counterCoolTime);
     }
 
@@ -251,9 +252,9 @@ public class Player : MonoBehaviour
         m_sword.tag = "Normal";
     }
 
-    private void SetIsWeakAttack()
+    private void SetIsAttackFalse()
     {
-        m_isWeakAttack = false;
+        m_canAttack = false;
     }
 
     private void SetShieldFalse()

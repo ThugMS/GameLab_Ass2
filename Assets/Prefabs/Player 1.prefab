@@ -665,9 +665,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae9e7a3dc8db59408d540a3a792d611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_tutorialKeyInput: []
+  m_life: 5
+  m_isDead: 0
   m_sword: {fileID: 1611091882090352309}
   m_animator: {fileID: 4499776349497693644}
   m_body: {fileID: 4499776349497693645}
+  m_counterEffect: {fileID: 0}
+  m_heartContainer: {fileID: 0}
+  m_hitParticle: {fileID: 0}
+  m_smashParticle: {fileID: 0}
+  m_revival: {fileID: 0}
 --- !u!210 &3273139776583026226
 SortingGroup:
   m_ObjectHideFlags: 0
