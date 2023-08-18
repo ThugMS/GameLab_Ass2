@@ -39,9 +39,6 @@ public class WeakAttack : MonoBehaviour
         m_dir = (int)transform.parent.localScale.x;
 
         m_basePos = transform.position;
-        Debug.Log(m_basePos);
-
-        Debug.Log(m_basePos + (m_weakAttackPosA * m_dir));
 
         Collider2D col = Physics2D.OverlapArea(m_basePos + new Vector2(m_weakAttackPosA.x * m_dir, m_weakAttackPosA.y), m_basePos + new Vector2(m_weakAttackPosB.x * m_dir, m_weakAttackPosB.y), 1 << LayerMask.NameToLayer("Player"));
 
