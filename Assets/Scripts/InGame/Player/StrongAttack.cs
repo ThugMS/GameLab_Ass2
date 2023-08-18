@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class StrongAttack : MonoBehaviour
@@ -12,11 +13,13 @@ public class StrongAttack : MonoBehaviour
     private Vector2 m_basePos;
 
     [SerializeField] private Character m_player;
-    [SerializeField] private Vector2 m_strongAttackPosA = new Vector2(0.54f, 0.45f);
-    [SerializeField] private Vector2 m_strongAttackPosB = new Vector2(3.5f, -0.45f);
+    [SerializeField] private Vector2 m_strongAttackPosA = new Vector2(3.47f, 0.5f);
+    [SerializeField] private Vector2 m_strongAttackPosB = new Vector2(0.63f, -0.5f);
 
-    private int m_dir = 1;
-    [SerializeField] private float power = 20f;
+    [SerializeField] private Vector2 m_dir = Vector3.zero;
+    [SerializeField] private float power = 10f;
+
+    private float m_selfDiretion;
     #endregion
 
     #region PublicMethod
@@ -29,20 +32,18 @@ public class StrongAttack : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(m_basePos + new Vector2(m_weakAttackPosA.x * m_dir, m_weakAttackPosA.y), m_basePos + new Vector2(m_weakAttackPosB.x * m_dir, m_weakAttackPosB.y));
+        Gizmos.DrawLine(m_basePos + new Vector2(m_strongAttackPosA.x * m_selfDiretion, m_strongAttackPosA.y), m_basePos + new Vector2(m_strongAttackPosB.x * m_selfDiretion, m_strongAttackPosB.y));
     }
 
     #region PrivateMethod
     private void FindStrongAttackEnemy()
     {
-        m_dir = (int)transform.parent.localScale.x;
+        m_selfDiretion = (int)transform.parent.localScale.x;
 
         m_basePos = transform.position;
-        Debug.Log(m_basePos);
 
-        Debug.Log(m_basePos + (m_weakAttackPosA * m_dir));
 
-        Collider2D col = Physics2D.OverlapArea(m_basePos + new Vector2(m_weakAttackPosA.x * m_dir, m_weakAttackPosA.y), m_basePos + new Vector2(m_weakAttackPosB.x * m_dir, m_weakAttackPosB.y), 1 << LayerMask.NameToLayer("Player"));
+        Collider2D col = Physics2D.OverlapArea(m_basePos + new Vector2(m_strongAttackPosA.x * m_selfDiretion, m_strongAttackPosA.y), m_basePos + new Vector2(m_strongAttackPosB.x * m_selfDiretion, m_strongAttackPosB.y), 1 << LayerMask.NameToLayer("Player"));
 
         if (col != null)
         {
@@ -51,18 +52,12 @@ public class StrongAttack : MonoBehaviour
 
             if (hitPlayer != null)
             {
-                if (hitPlayer.IsAnimationStateName("counter"))
-                {
-                    Knight knightPlayer;
-                    hitPlayer.TryGetComponent(out knightPlayer);
-                    knightPlayer.ShowCounterEffect();
+                CameraController.instance.SmashShake();
 
-                    m_player.Hit(new Vector2(-m_dir, 0), power);
-                }
-                else
-                {
-                    hitPlayer.Hit(new Vector2(m_dir, 0), power);
-                }
+                EffectManager.instance.CallEffect(EffectManager.EEffectType.smash, transform.position + Vector3.right * m_selfDiretion * 3, m_selfDiretion);
+
+                hitPlayer.Hit(new Vector2(m_selfDiretion * m_dir.x, m_dir.y).normalized, power);
+                Debug.Log(new Vector2(m_selfDiretion * m_dir.x, m_dir.y).normalized);
             }
         }
     }
