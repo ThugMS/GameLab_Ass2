@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     private bool m_isGround = true;
     private bool m_canMove = true;
     private bool m_canAttack = true; //playing attack
+    private bool m_canFlip = true;
 
     private bool m_isCounter = false; //hit counter
     private bool m_isShield = false;
@@ -83,7 +84,7 @@ public class Player : MonoBehaviour
 
         transform.Translate(new Vector3(m_speed * _dir * Time.deltaTime, 0, 0));
         
-        if(m_dir != _dir)
+        if(m_dir != _dir && m_canFlip == true)
         {
             m_dir = _dir;
             transform.localScale = new Vector3(_dir, 1f, 1f);
@@ -116,6 +117,7 @@ public class Player : MonoBehaviour
         }
 
         m_canAttack = false;
+        m_canFlip = false;
         m_animator.SetTrigger("WeakAttack");
 
         m_sword.WeakAttack(m_weakAttackCoolTime);
@@ -129,7 +131,8 @@ public class Player : MonoBehaviour
             m_tutorialKeyInput[(int)TutorialInput.LinkAttack].Check();
         }
 
-        Invoke(nameof(SetIsAttackFalse), m_weakAttackCoolTime);
+        Invoke(nameof(SetCanAttackTrue), m_weakAttackCoolTime);
+        Invoke(nameof(SetCanFlipTrue), m_weakAttackCoolTime);
     }
 
     public void StrongAttack()
@@ -138,6 +141,7 @@ public class Player : MonoBehaviour
             return;
 
         m_canAttack = false;
+        m_canFlip = false;
         //m_animator.SetBool("StrongAttack", true);
         m_animator.SetTrigger("StrongAttack");
 
@@ -146,7 +150,8 @@ public class Player : MonoBehaviour
             m_tutorialKeyInput[(int)TutorialInput.StrongAttack].Check();
         }
 
-        Invoke(nameof(SetIsAttackFalse), m_strongAttackCoolTime);
+        Invoke(nameof(SetCanAttackTrue), m_strongAttackCoolTime);
+        Invoke(nameof(SetCanFlipTrue), m_strongAttackCoolTime);
 
         m_sword.StrongAttack(m_strongAttackCoolTime);
     }
@@ -157,6 +162,7 @@ public class Player : MonoBehaviour
             return;
 
         m_canAttack = false;
+        m_canFlip = false;
         m_isCounter = true;
 
         if (m_tutorialKeyInput[(int)TutorialInput.Counter].isCheck() == false)
@@ -165,7 +171,8 @@ public class Player : MonoBehaviour
         }
 
         m_animator.SetTrigger("Counter");
-        Invoke(nameof(SetIsAttackFalse), m_counterCoolTime);
+        Invoke(nameof(SetCanFlipTrue), m_counterCoolTime);
+        Invoke(nameof(SetCanAttackTrue), m_counterCoolTime);
         Invoke("SetUncountable", m_counterCoolTime);
     }
 
@@ -252,9 +259,14 @@ public class Player : MonoBehaviour
         m_sword.tag = "Normal";
     }
 
-    private void SetIsAttackFalse()
+    private void SetCanFlipTrue()
     {
-        m_canAttack = false;
+        m_canFlip = true;
+    }
+
+    private void SetCanAttackTrue()
+    {
+        m_canAttack = true;
     }
 
     private void SetShieldFalse()
