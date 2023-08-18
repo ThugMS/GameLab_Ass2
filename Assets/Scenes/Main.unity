@@ -740,6 +740,14 @@ PrefabInstance:
       propertyPath: m_stagePanel
       value: 
       objectReference: {fileID: 516526458}
+    - target: {fileID: 4256840968209429147, guid: 98b9829bc1ea78b4cb90315f17a8e021, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256840968911864725, guid: 98b9829bc1ea78b4cb90315f17a8e021, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8245720743676752516, guid: 98b9829bc1ea78b4cb90315f17a8e021, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -3010,6 +3018,10 @@ PrefabInstance:
       propertyPath: m_heartContainer
       value: 
       objectReference: {fileID: 1298062201}
+    - target: {fileID: 4829617550293904565, guid: 67191fcec67e1de4cb2f18e2e2fcba1e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4829617550293904565, guid: 67191fcec67e1de4cb2f18e2e2fcba1e, type: 3}
       propertyPath: m_heartContainer
       value: 

@@ -18,8 +18,8 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private List<TutorialButton> m_keyName = new List<TutorialButton>();
 
-    private Player m_player1Controller;
-    private Player m_player2Controller;
+    private Character m_player1Controller;
+    private Character m_player2Controller;
     #endregion
 
     #region PublicMethod
@@ -30,24 +30,26 @@ public class PlayerManager : MonoBehaviour
     }
     void Start()
     {   
-        m_player1Controller = m_player1.GetComponent<Player>();
-        m_player2Controller = m_player2.GetComponent<Player>();
+        m_player1Controller = m_player1.GetComponent<Character>();
+        m_player2Controller = m_player2.GetComponent<Character>();
 
         AddTutorialKey(ref m_player1, 0, 7);
         AddTutorialKey(ref m_player2, 7, 7);
     }
-    void Update()
+    private void Update()
     {
         PlayerInput();
     }
+    
+    
 
     public void InitLife()
     {
-        m_player1Controller.m_life = 5;
-        m_player2Controller.m_life = 5;
+        //m_player1Controller.m_life = 5;
+        //m_player2Controller.m_life = 5;
 
-        m_player1Controller.m_isDead = false;
-        m_player2Controller.m_isDead = false;
+        //m_player1Controller.m_isDead = false;
+        //m_player2Controller.m_isDead = false;
     }
     #endregion
 
@@ -74,15 +76,15 @@ public class PlayerManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.G))
         {
-            m_player1Controller.WeakAttack();
+            m_player1Controller.Command1();
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
-            m_player1Controller.StrongAttack();
+            m_player1Controller.Command2();
         }
         if (Input.GetKeyDown(KeyCode.J))
         {
-            m_player1Controller.Counter();
+            m_player1Controller.Command3();
         }
 
         //Player2 Action
@@ -100,15 +102,15 @@ public class PlayerManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
-            m_player2Controller.WeakAttack();
+            m_player2Controller.Command1();
         }
         if (Input.GetKeyDown(KeyCode.Semicolon))
         {
-            m_player2Controller.StrongAttack();
+            m_player2Controller.Command2();
         }
         if (Input.GetKeyDown(KeyCode.Quote))
         {
-            m_player2Controller.Counter();
+            m_player2Controller.Command3();
         }
     }
 

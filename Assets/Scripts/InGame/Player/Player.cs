@@ -248,6 +248,27 @@ public class Player : MonoBehaviour
 		if(m_heartContainer.PopAndReturnRevivalPossibility() == true)
 			m_revival.Revive();
 	}
+
+    public void CheckHitWeakAttack(GameObject _Attackplayer)
+    {
+        if (m_isCounter == true)
+        {
+            _Attackplayer.GetComponent<Player>().CounterHit();
+            m_counterEffect.Play("sizeUpWithFadeOut");
+        }
+        else
+        {
+            if (m_isShield == false)
+            {
+                WeakKnockBack(_Attackplayer.GetComponent<Player>().GetDirection());
+                m_hitParticle.transform.position = transform.position;
+                m_hitParticle.Play();
+            }
+            Hit();
+
+            CameraController.instance.AttackShake();
+        }
+    }
     #endregion
 
     #region PrivateMethod
@@ -324,11 +345,9 @@ public class Player : MonoBehaviour
     
     private void OnTriggerStay2D(Collider2D collision)
     {
-        
-
         if (collision.CompareTag("WeakAttack"))
         {
-            GameObject hitplayer = collision.GetComponent<PlayerSword>().m_player;
+            GameObject hitplayer = collision.GetComponent<GetPlayerFromSword>().GetPlayer();
 
             if (m_isCounter == true)
             {
@@ -355,7 +374,7 @@ public class Player : MonoBehaviour
 
         if (collision.CompareTag("StrongAttack"))
         {
-            GameObject hitplayer = collision.GetComponent<PlayerSword>().m_player;
+            GameObject hitplayer = collision.GetComponent<GetPlayerFromSword>().GetPlayer();
 
             if (m_isShield == false)
             {
@@ -365,7 +384,7 @@ public class Player : MonoBehaviour
             }
 
             Hit();
-
+            Debug.Log("yes");
             CameraController.instance.SmashShake();
 
             
@@ -385,8 +404,6 @@ public class Player : MonoBehaviour
 
         StartCoroutine(ShowBodyShield());
     }
-
-
 
     IEnumerator ShowBodyShield()
     {

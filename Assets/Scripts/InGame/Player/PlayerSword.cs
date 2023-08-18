@@ -5,25 +5,18 @@ using UnityEngine;
 public class PlayerSword : MonoBehaviour
 {
     #region PublicVariables
-    public GameObject m_player;
     #endregion
 
     #region PrivateVariables
     private bool isHit = false;
-    private BoxCollider2D m_boxCollider;
-    private Vector2 m_colliderOffset = new Vector2(0, 0.2865495f);
-    private Vector2 m_colliderWeakAttackOffeset = new Vector2(0, 0.1949511f);
-    private Vector2 m_colliderStrongAttackOffeset = new Vector2(0, 0.1436397f);
-
-    private Vector2 m_colliderSize = new Vector2(1, 0.6323969f);
-    private Vector2 m_colliderWeakAttackSize = new Vector2(1, 1.140774f);
-    private Vector2 m_colliderStrongAttackSize = new Vector2(2.18f, 1.506497f);
+    [SerializeField] private BoxCollider2D m_weakAttackCollider;
+    [SerializeField] private BoxCollider2D m_strongAttackCollider;
     #endregion
 
     #region PublicMethod
     void Start()
     {
-        m_boxCollider = GetComponent<BoxCollider2D>();
+
     }
 
     public void WeakAttack(float _weakAttackCoolTime)
@@ -43,16 +36,20 @@ public class PlayerSword : MonoBehaviour
         SetSwordTagNormal();
         isHit = true;
 
-        Invoke("ResetIsHit", 1f);
+        Invoke("ResetIsHit", 0.3f);
     }
     #endregion
 
     #region PrivateMethod
     private void SetSwordTagNormal()
     {
-        transform.tag = "Normal";
-        m_boxCollider.offset = m_colliderOffset;
-        m_boxCollider.size = m_colliderSize;
+ 
+
+        m_weakAttackCollider.tag = "Normal";
+        m_strongAttackCollider.tag = "Normal";
+
+        m_weakAttackCollider.enabled = false;
+        m_strongAttackCollider.enabled = false;
     }
 
     private void SetSwordTagWeakAttack()
@@ -62,10 +59,9 @@ public class PlayerSword : MonoBehaviour
             isHit = false;
             return;
         }
+        m_weakAttackCollider.tag = "WeakAttack";
 
-        transform.tag = "WeakAttack";
-        m_boxCollider.offset = m_colliderWeakAttackOffeset;
-        m_boxCollider.size = m_colliderWeakAttackSize;
+        m_weakAttackCollider.enabled = true;
     }
 
     private void SetSwordTagStrongAttack()
@@ -76,9 +72,9 @@ public class PlayerSword : MonoBehaviour
             return;
         }
 
-        transform.tag = "StrongAttack";
-        m_boxCollider.offset = m_colliderStrongAttackOffeset;
-        m_boxCollider.size = m_colliderStrongAttackSize;
+        m_strongAttackCollider.tag = "StrongAttack";
+
+        m_strongAttackCollider.enabled = true;
     }
 
     private void ResetIsHit()
