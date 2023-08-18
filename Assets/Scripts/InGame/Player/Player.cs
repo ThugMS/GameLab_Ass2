@@ -38,7 +38,9 @@ public class Player : MonoBehaviour
     private bool m_isCounter = false; //hit counter
     private bool m_isShield = false;
     private bool m_isKnockBack = false;
-    
+    private bool m_movePenalty = false;
+
+
 
     private Rigidbody2D m_rigidbody;
     private Collider2D m_collider;
@@ -82,9 +84,17 @@ public class Player : MonoBehaviour
             }
         }
 
-        transform.Translate(new Vector3(m_speed * _dir * Time.deltaTime, 0, 0));
+        if (m_movePenalty == true)
+        {
+            transform.Translate(new Vector3(m_speed * _dir * Time.deltaTime / 4, 0, 0));
+        }
+        else
+        {
+            transform.Translate(new Vector3(m_speed * _dir * Time.deltaTime, 0, 0));
+        }
         
-        if(m_dir != _dir && m_canFlip == true)
+
+        if (m_dir != _dir && m_canFlip == true)
         {
             m_dir = _dir;
             transform.localScale = new Vector3(_dir, 1f, 1f);
@@ -142,6 +152,8 @@ public class Player : MonoBehaviour
 
         m_canAttack = false;
         m_canFlip = false;
+        m_movePenalty = true;
+
         //m_animator.SetBool("StrongAttack", true);
         m_animator.SetTrigger("StrongAttack");
 
@@ -152,6 +164,7 @@ public class Player : MonoBehaviour
 
         Invoke(nameof(SetCanAttackTrue), m_strongAttackCoolTime);
         Invoke(nameof(SetCanFlipTrue), m_strongAttackCoolTime);
+        Invoke(nameof(OffMovePenalty), m_strongAttackCoolTime);
 
         m_sword.StrongAttack(m_strongAttackCoolTime);
     }
@@ -164,6 +177,7 @@ public class Player : MonoBehaviour
         m_canAttack = false;
         m_canFlip = false;
         m_isCounter = true;
+        m_movePenalty = true;
 
         if (m_tutorialKeyInput[(int)TutorialInput.Counter].isCheck() == false)
         {
@@ -173,6 +187,7 @@ public class Player : MonoBehaviour
         m_animator.SetTrigger("Counter");
         Invoke(nameof(SetCanFlipTrue), m_counterCoolTime);
         Invoke(nameof(SetCanAttackTrue), m_counterCoolTime);
+        Invoke(nameof(OffMovePenalty), m_counterCoolTime);
         Invoke("SetUncountable", m_counterCoolTime);
     }
 
@@ -267,6 +282,11 @@ public class Player : MonoBehaviour
     private void SetCanAttackTrue()
     {
         m_canAttack = true;
+    }
+
+    private void OffMovePenalty()
+    {
+        m_movePenalty = false;
     }
 
     private void SetShieldFalse()
