@@ -1080,6 +1080,7 @@ MonoBehaviour:
   m_defalutPos: {x: 0, y: 0, z: 0}
   height: 60
   m_thunerPos: {x: 0, y: 0, z: 0}
+  m_thunder: {fileID: 7565026390068988006}
 --- !u!1 &7565026390068988006
 GameObject:
   m_ObjectHideFlags: 0

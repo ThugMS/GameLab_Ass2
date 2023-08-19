@@ -23,10 +23,6 @@ public class StrongAttack : MonoBehaviour
     #endregion
 
     #region PublicMethod
-    private void Start()
-    {
-
-    }
     #endregion
 
     private void OnDrawGizmos()
@@ -55,9 +51,9 @@ public class StrongAttack : MonoBehaviour
                 CameraController.instance.SmashShake();
 
                 EffectManager.instance.CallEffect(EffectManager.EEffectType.smash, transform.position + Vector3.right * m_selfDiretion * 3, m_selfDiretion);
+                ParticleManager.instance.CallParticle(ParticleManager.ParticleType.smash, transform.position + Vector3.right * m_selfDiretion * 3, m_selfDiretion);
 
                 hitPlayer.Hit(new Vector2(m_selfDiretion * m_dir.x, m_dir.y).normalized, power);
-                Debug.Log(new Vector2(m_selfDiretion * m_dir.x, m_dir.y).normalized);
             }
         }
     }

@@ -10,17 +10,18 @@ public class Thunder : MonoBehaviour
     #region PrivateVariables
     private float m_coolTime = 3f;
     private float m_range = 25f;
+    private float m_distance = 0f;
 
     [SerializeField] private Vector3 m_defalutPos = Vector3.zero;
-    [SerializeField] private float height = 60f;
+    [SerializeField] private float m_height = 60f;
+    [SerializeField] private float m_thunderHeight = 5f;
     [SerializeField] private Vector3 m_thunerPos = Vector3.zero;
+    [SerializeField] private GameObject m_thunder;
+
+    
     #endregion
 
     #region PublicMethod
-    void Start()
-    {
-        ShowThunder();
-    }
 
     void Update()
     {
@@ -40,7 +41,7 @@ public class Thunder : MonoBehaviour
         {
             Vector3 randomPos = Vector3.zero;
             randomPos.x = Random.Range(-m_range, m_range);
-            randomPos.y = height;
+            randomPos.y = m_height;
 
             Debug.Log(randomPos.x);
 
@@ -55,8 +56,11 @@ public class Thunder : MonoBehaviour
             }
         }
 
-        if (m_thunerPos == Vector3.zero)
-            m_thunerPos.y = height;
+        
+        m_thunerPos.y = 30 + m_thunderHeight;
+
+        m_thunder.transform.position = m_thunerPos;
+        m_thunder.SetActive(true);
     }
 
     private Vector3 FindPosition(Vector3 _originPos)
@@ -65,6 +69,8 @@ public class Thunder : MonoBehaviour
 
         if (ground.collider == null)
             return Vector3.zero;
+
+        m_distance = ground.distance;
 
         return _originPos;
     }
