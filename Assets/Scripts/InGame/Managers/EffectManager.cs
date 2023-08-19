@@ -27,17 +27,17 @@ public class EffectManager : MonoBehaviour
 		GameObject current = GetEffectFromList(type);
 		EffectBundle bundle = effects[(int)type];
 
-		if(current == null)
+		if (current == null)
 		{
 			current = Instantiate(bundle.prefab, position, Quaternion.identity, transform) as GameObject;
 			bundle.list.Add(current);
-            current.transform.localScale = new Vector3(_rotMult, 1, 1);
-        }
+			current.transform.localScale = new Vector3(_rotMult, 1, 1);
+		}
 		else
 		{
 			current.transform.position = position;
-            current.transform.localScale = new Vector3(_rotMult, 1, 1);
-            current.SetActive(true);
+			current.transform.localScale = new Vector3(_rotMult, 1, 1);
+			current.SetActive(true);
 		}
 	}
 	#endregion
