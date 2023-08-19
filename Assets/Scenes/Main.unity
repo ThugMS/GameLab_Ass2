@@ -2045,6 +2045,7 @@ MonoBehaviour:
   datas:
   - {fileID: 11400000, guid: 08f06296e640472458c1a746bdae4aa3, type: 2}
   - {fileID: 11400000, guid: 359062dbbf2eb42499208c84cbfc7db2, type: 2}
+  - {fileID: 11400000, guid: c32b1c00222d47b439a2ccb240e1a10f, type: 2}
 --- !u!81 &1964464483
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3021,7 +3022,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1540729198250896552, guid: ab0cb30a2650edc41b86844934fb0745, type: 3}
       propertyPath: power
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6728108071298201842, guid: ab0cb30a2650edc41b86844934fb0745, type: 3}
       propertyPath: m_Name
