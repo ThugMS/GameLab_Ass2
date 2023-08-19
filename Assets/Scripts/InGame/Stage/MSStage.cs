@@ -9,26 +9,29 @@ public abstract class MSStage : MonoBehaviour
     public Vector2 m_player2InitialPos = Vector2.zero;
     #endregion
 
-    #region PrivateVariables
-    [SerializeField] private GameObject m_stagePrefab;
+    #region ProtectedVariables
+    [SerializeField] protected GameObject m_stagePrefab;
 
-    private bool m_isStageStart = false;
+    protected bool m_isStageStart = false;
     #endregion
 
     #region PublicMethod
-    private void Update()
+    public virtual void StageStart()
     {
-        if (m_isStageStart == true)
-        {
-            m_stagePrefab.SetActive(true);
-        }
-        else
-        {
-            m_stagePrefab.SetActive(false);
-        }
+        m_stagePrefab.SetActive(true);
+        MovePlayerStageInitialPos();
+    }
+
+    public virtual void StageEnd()
+    {
+        m_stagePrefab?.SetActive(false);
     }
     #endregion
 
-    #region PrivateMethod
+    #region ProtectedMethod
+    protected void MovePlayerStageInitialPos()
+    {
+        PlayerManager.instance.MovePlayerPosition(m_player1InitialPos, m_player2InitialPos);
+    }
     #endregion
 }

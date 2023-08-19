@@ -41,7 +41,11 @@ public class PlayerManager : MonoBehaviour
         PlayerInput();
     }
     
-    
+    public void MovePlayerPosition(Vector2 _pos1, Vector2 _pos2)
+    {
+        m_player1.transform.position = _pos1;
+        m_player2.transform.position = _pos2;
+    }
 
     public void InitLife()
     {
