@@ -33,8 +33,8 @@ public class PlayerManager : MonoBehaviour
         m_player1Controller = m_player1.GetComponent<Character>();
         m_player2Controller = m_player2.GetComponent<Character>();
 
-        AddTutorialKey(ref m_player1, 0, 7);
-        AddTutorialKey(ref m_player2, 7, 7);
+        //AddTutorialKey(ref m_player1, 0, 7);
+        //AddTutorialKey(ref m_player2, 7, 7);
     }
     private void Update()
     {
