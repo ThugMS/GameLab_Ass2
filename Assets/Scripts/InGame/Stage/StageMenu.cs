@@ -40,7 +40,7 @@ public class StageMenu : MonoBehaviour
 
     public void ChooseStage1()
     {
-        m_stage1.GetComponent<Stage1>().StartStage();
+        //m_stage1.GetComponent<Stage1>().StartStage();
         SpawnInStage();
         GameManager.instance.GameStart();
         PlayerManager.instance.InitLife();
