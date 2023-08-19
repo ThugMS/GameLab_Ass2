@@ -49,11 +49,11 @@ public class PlayerManager : MonoBehaviour
 
     public void InitLife()
     {
-        //m_player1Controller.m_life = 5;
-        //m_player2Controller.m_life = 5;
+        m_player1Controller.m_life = 5;
+        m_player2Controller.m_life = 5;
 
-        //m_player1Controller.m_isDead = false;
-        //m_player2Controller.m_isDead = false;
+        m_player1Controller.m_isDead = false;
+        m_player2Controller.m_isDead = false;
     }
     #endregion
 

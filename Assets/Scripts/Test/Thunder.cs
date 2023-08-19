@@ -33,11 +33,7 @@ public class Thunder : MonoBehaviour
             randomPos.x = Random.Range(-m_range, m_range);
             randomPos.y = m_height;
 
-            Debug.Log(randomPos.x);
-
             randomPos = FindPosition(randomPos);
-
-            Debug.Log(randomPos);
 
             if (randomPos != Vector3.zero)
             {
