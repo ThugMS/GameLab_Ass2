@@ -3019,6 +3019,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1540729198250896552, guid: ab0cb30a2650edc41b86844934fb0745, type: 3}
+      propertyPath: power
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6728108071298201842, guid: ab0cb30a2650edc41b86844934fb0745, type: 3}
       propertyPath: m_Name
       value: ThunderEvent
