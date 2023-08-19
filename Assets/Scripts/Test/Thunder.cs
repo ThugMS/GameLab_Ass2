@@ -18,26 +18,16 @@ public class Thunder : MonoBehaviour
     [SerializeField] private Vector3 m_thunerPos = Vector3.zero;
     [SerializeField] private GameObject m_thunder;
 
-    
+
     #endregion
 
     #region PublicMethod
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ShowThunder();
-        }
-    }
-    #endregion
-
-    #region PrivateMethod
-    private void ShowThunder()
+    public void ShowThunder()
     {
         m_thunerPos = Vector3.zero;
 
-        for(int i = 0; i < 20; i++)
+        for (int i = 0; i < 20; i++)
         {
             Vector3 randomPos = Vector3.zero;
             randomPos.x = Random.Range(-m_range, m_range);
@@ -49,19 +39,23 @@ public class Thunder : MonoBehaviour
 
             Debug.Log(randomPos);
 
-            if(randomPos != Vector3.zero)
+            if (randomPos != Vector3.zero)
             {
                 m_thunerPos = randomPos;
                 break;
             }
         }
 
-        
-        m_thunerPos.y =  m_thunderHeight;
+
+        m_thunerPos.y = m_thunderHeight;
 
         m_thunder.transform.position = m_thunerPos;
         m_thunder.SetActive(true);
     }
+    #endregion
+
+    #region PrivateMethod
+
 
     private Vector3 FindPosition(Vector3 _originPos)
     {
