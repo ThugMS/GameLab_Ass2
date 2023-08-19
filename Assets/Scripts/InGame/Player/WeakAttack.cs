@@ -55,11 +55,14 @@ public class WeakAttack : MonoBehaviour
                     hitPlayer.TryGetComponent(out knightPlayer);
                     knightPlayer.ShowCounterEffect();
 
+                    ParticleManager.instance.CallParticle(ParticleManager.ParticleType.hit, transform.position+Vector3.right * m_dir * 3, m_dir);
+
                     m_player.Hit(new Vector2(-m_dir, 0), power);
                 }
                 else
                 {
                     hitPlayer.Hit(new Vector2(m_dir, 0), power);
+                    ParticleManager.instance.CallParticle(ParticleManager.ParticleType.hit, transform.position + Vector3.right * m_dir * 3, m_dir);
                 }
             }
         }

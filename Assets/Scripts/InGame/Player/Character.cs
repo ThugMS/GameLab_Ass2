@@ -22,9 +22,6 @@ public abstract class Character : MonoBehaviour
     [SerializeField] private float m_jumpPower = 7f;
     [SerializeField] private Rigidbody2D m_rigidbody;
     
-
-    
-
     private bool m_isGround = true;
     private string Ground = "Ground";
     #endregion

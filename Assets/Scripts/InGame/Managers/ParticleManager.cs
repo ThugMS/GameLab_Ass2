@@ -9,7 +9,7 @@ public class ParticleManager : MonoBehaviour
     public static ParticleManager instance;
 
     public enum ParticleType { 
-        smash = 0
+        smash = 0, hit, thunder
     }
     #endregion
 
