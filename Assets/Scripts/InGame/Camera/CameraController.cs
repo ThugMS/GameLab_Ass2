@@ -61,6 +61,10 @@ public class CameraController : MonoBehaviour
 	{
 		shaker.SmashShake();
 	}
+	public void ThunderShake()
+	{
+		shaker.ThunderShake();
+	}
 	public void GoTutorialRoom()
 	{
 		m_currentField = m_tutorialRoomFieldData;

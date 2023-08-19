@@ -35,6 +35,7 @@ public class ThunderBottom : MonoBehaviour
         m_pos = transform.position;
         m_pos.y = m_pos.y - 5f;
         ParticleManager.instance.CallParticle(ParticleManager.ParticleType.thunder, m_pos, 1);
+        CameraController.instance.ThunderShake();
     }
 
     private void AttackPlayer()
