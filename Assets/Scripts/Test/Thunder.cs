@@ -59,6 +59,8 @@ public class Thunder : MonoBehaviour
         
         m_thunerPos.y = 30 + m_thunderHeight;
 
+        m_thunerPos.x = 0;
+
         m_thunder.transform.position = m_thunerPos;
         m_thunder.SetActive(true);
     }
