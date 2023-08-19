@@ -1648,11 +1648,8 @@ GameObject:
   - component: {fileID: 7459898235192267047}
   - component: {fileID: 8932966110394495427}
   - component: {fileID: 809676222790862419}
-  - component: {fileID: 3303764869314224874}
   - component: {fileID: 2520410194681627610}
   - component: {fileID: 5485572811971768686}
-  - component: {fileID: 8090078310217141087}
-  - component: {fileID: 1627771087204194006}
   - component: {fileID: 5422701018921864568}
   m_Layer: 7
   m_Name: Player
@@ -1714,29 +1711,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &3303764869314224874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5295662629142493850}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cae9e7a3dc8db59408d540a3a792d611, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_tutorialKeyInput: []
-  m_life: 5
-  m_isDead: 0
-  m_sword: {fileID: 1611091882090352309}
-  m_animator: {fileID: 4499776349497693644}
-  m_body: {fileID: 4499776349497693645}
-  m_counterEffect: {fileID: 4015355647860865039}
-  m_heartContainer: {fileID: 0}
-  m_hitParticle: {fileID: 0}
-  m_smashParticle: {fileID: 0}
-  m_revival: {fileID: 8090078310217141087}
 --- !u!210 &2520410194681627610
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -1760,36 +1734,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d144d6683b96b848857f835d761ffe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8090078310217141087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5295662629142493850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cde30a7f7c5dee44e935db3b8418fa06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_tryCounter: 5
-  m_maxDistance: 15
-  m_randomRange: 15
-  m_spawnPosY: 20
---- !u!114 &1627771087204194006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5295662629142493850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a69d5141aadc0945b712cb921c5bf74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_weakAttackCollider: {fileID: 0}
-  m_strongAttackCollider: {fileID: 0}
 --- !u!114 &5422701018921864568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1802,6 +1746,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b354c6f19b58b54d9140ceabfc81930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_isDead: 0
+  m_life: 5
   m_animator: {fileID: 4499776349497693644}
   m_canMove: 1
   m_canAct: 1
@@ -1810,6 +1756,7 @@ MonoBehaviour:
   m_speed: 6
   m_jumpPower: 12
   m_rigidbody: {fileID: 8932966110394495427}
+  m_heartContainer: {fileID: 0}
   counterEffect: {fileID: 4015355647860865039}
 --- !u!1 &5368484599577314283
 GameObject:
