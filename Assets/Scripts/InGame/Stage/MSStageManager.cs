@@ -14,6 +14,8 @@ public class MSStageManager : MonoBehaviour
 
     #region PrivateVariables
     [SerializeField] private MSStage[] m_stageList;
+
+    private StageType m_stageType;
     #endregion
 
     #region PublicMethod
@@ -28,11 +30,13 @@ public class MSStageManager : MonoBehaviour
     public void StageStart(StageType _type)
     {
         m_stageList[(int)_type].StageStart();
+
+        m_stageType = _type;
     }
 
-    public void StageEnd(StageType _type)
+    public void StageEnd()
     {
-        m_stageList[(int) _type].StageEnd();
+        m_stageList[(int) m_stageType].StageEnd();
     }
     #endregion
 

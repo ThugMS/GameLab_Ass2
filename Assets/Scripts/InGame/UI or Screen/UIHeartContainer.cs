@@ -39,7 +39,7 @@ public class UIHeartContainer : MonoBehaviour
 	private void HeartCountOut()
 	{
 		GameManager.instance.GameEnd();
-		Destroy(GameObject.Find("Platforms"));
+		MSStageManager.instance.StageEnd();
     }
 	#endregion
 }
