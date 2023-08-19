@@ -65,8 +65,8 @@ public class VitoryScreen : MonoBehaviour
     #region PrivateMethod
     private void GetVictoryPlayer()
     {
-        m_player1IsDead = PlayerManager.instance.m_player1.GetComponent<Player>().m_isDead;
-        m_player2IsDead = PlayerManager.instance.m_player2.GetComponent<Player>().m_isDead;
+        m_player1IsDead = PlayerManager.instance.m_player1.GetComponent<Character>().m_isDead;
+        m_player2IsDead = PlayerManager.instance.m_player2.GetComponent<Character>().m_isDead;
     }
 
     private void FillVictoryName()

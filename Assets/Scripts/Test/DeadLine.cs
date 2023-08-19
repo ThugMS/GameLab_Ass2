@@ -16,11 +16,13 @@ public class DeadLine : MonoBehaviour
 	#region PrivateMethod
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		Player p = other.GetComponent<Player>();
+		Character p = other.GetComponent<Character>();
 		if (p != null)
 		{
 			p.Dead();
 		}
+
+
 	}
 	#endregion
 }

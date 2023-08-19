@@ -6,6 +6,8 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour
 {
     #region PublicVariables
+    public bool m_isDead = false;
+    public int m_life = 5;
     #endregion
 
     #region ProtectedVariables
@@ -21,7 +23,8 @@ public abstract class Character : MonoBehaviour
     [SerializeField] private float m_speed = 10f;
     [SerializeField] private float m_jumpPower = 7f;
     [SerializeField] private Rigidbody2D m_rigidbody;
-    
+    [SerializeField] private UIHeartContainer m_heartContainer;
+
     private bool m_isGround = true;
     private string Ground = "Ground";
     #endregion
@@ -66,6 +69,20 @@ public abstract class Character : MonoBehaviour
         m_animator.ResetTrigger("command1");
         m_animator.ResetTrigger("command2");
         m_animator.ResetTrigger("command3");
+    }
+
+    public void Dead()
+    {
+        m_life--;
+
+        if(m_life <= 0)
+        {
+            m_isDead = true;
+            m_life = 5;
+        }
+
+        if (m_heartContainer.PopAndReturnRevivalPossibility() == true)
+           Revive();
     }
 
     public abstract void Command1();
@@ -115,6 +132,36 @@ public abstract class Character : MonoBehaviour
     private void SetCanJumpFalse()
     {
         m_canJump = false;
+    }
+
+    private void Revive()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            Vector3 randomPos = Vector3.zero;
+            randomPos.x = Random.Range(-30, 30);
+            randomPos.y = 20;
+
+            if (FindPosition(randomPos) == true)
+            {
+                transform.position = randomPos;
+                m_rigidbody.velocity = Vector3.zero;
+                return;
+            }
+        }
+
+        transform.position = new Vector2(0, 20);
+        m_rigidbody.velocity = Vector3.zero;
+    }
+
+    private bool FindPosition(Vector3 _originPos)
+    {
+        RaycastHit2D ground = Physics2D.Raycast(_originPos, Vector3.down, 100f, 1 << LayerMask.NameToLayer("Ground"));
+
+        if (ground.collider == null)
+            return false;
+
+        return true; 
     }
     #endregion
 
