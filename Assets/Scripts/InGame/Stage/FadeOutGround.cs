@@ -22,7 +22,6 @@ public class FadeOutGround : MonoBehaviour
         if(1 << collision.gameObject.layer == 1 << LayerMask.NameToLayer("Player"))
         {
             m_animator.SetTrigger("Touch");
-            Debug.Log("µé¾î¿È");
         }
     }
     #endregion

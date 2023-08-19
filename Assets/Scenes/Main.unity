@@ -1292,7 +1292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_stageList:
-  - {fileID: 0}
+  - {fileID: 6514272205455689468}
   - {fileID: 7687522184603048003}
   - {fileID: 7687522184603048003}
   - {fileID: 7687522184603048003}
@@ -3144,6 +3144,74 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a66293aab9a08a04b99428ddf1f1f314, type: 3}
+--- !u!1001 &6514272205455689466
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 338484934085374776, guid: 915a083ddafb6d142806cd02dd792905, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 338484934085374776, guid: 915a083ddafb6d142806cd02dd792905, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 338484934085374776, guid: 915a083ddafb6d142806cd02dd792905, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 27.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 338484934085374776, guid: 915a083ddafb6d142806cd02dd792905, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 338484934085374776, guid: 915a083ddafb6d142806cd02dd792905, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 338484934085374776, guid: 915a083ddafb6d142806cd02dd792905, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 338484934085374776, guid: 915a083ddafb6d142806cd02dd792905, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 338484934085374776, guid: 915a083ddafb6d142806cd02dd792905, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 338484934085374776, guid: 915a083ddafb6d142806cd02dd792905, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 338484934085374776, guid: 915a083ddafb6d142806cd02dd792905, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 338484934085374776, guid: 915a083ddafb6d142806cd02dd792905, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7567626273623798697, guid: 915a083ddafb6d142806cd02dd792905, type: 3}
+      propertyPath: m_Name
+      value: MSTutorial
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 915a083ddafb6d142806cd02dd792905, type: 3}
+--- !u!114 &6514272205455689468 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6514272205455689468, guid: 915a083ddafb6d142806cd02dd792905, type: 3}
+  m_PrefabInstance: {fileID: 6514272205455689466}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a466d2f50d946e42b41339cd2158e60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7687522184603048002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3283,6 +3351,14 @@ PrefabInstance:
       propertyPath: m_stageTrigger
       value: 
       objectReference: {fileID: 981641865}
+    - target: {fileID: 2710646834826412839, guid: 67191fcec67e1de4cb2f18e2e2fcba1e, type: 3}
+      propertyPath: m_heartContainer
+      value: 
+      objectReference: {fileID: 1199858080}
+    - target: {fileID: 2710646835248059959, guid: 67191fcec67e1de4cb2f18e2e2fcba1e, type: 3}
+      propertyPath: m_heartContainer
+      value: 
+      objectReference: {fileID: 1298062201}
     - target: {fileID: 3261668766882075263, guid: 67191fcec67e1de4cb2f18e2e2fcba1e, type: 3}
       propertyPath: m_Name
       value: Start Set
