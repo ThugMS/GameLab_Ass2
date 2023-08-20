@@ -73,6 +73,11 @@ public class CameraController : MonoBehaviour
 	{
 		m_currentField = m_mainStageFieldData;
 	}
+	public void ChangePlayer()
+	{
+		m_player1 = PlayerManager.instance.m_player1;
+		m_player2 = PlayerManager.instance.m_player2;
+	}
 	#endregion
 	#region PrivateMethod
 	private void SetCameraState()

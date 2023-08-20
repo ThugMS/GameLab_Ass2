@@ -8,6 +8,8 @@ public abstract class Character : MonoBehaviour
     #region PublicVariables
     public bool m_isDead = false;
     public int m_life = 5;
+
+    public UIHeartContainer m_heartContainer;
     #endregion
 
     #region ProtectedVariables
@@ -23,7 +25,10 @@ public abstract class Character : MonoBehaviour
     [SerializeField] protected float m_speed = 10f;
     [SerializeField] protected float m_jumpPower = 7f;
     [SerializeField] private Rigidbody2D m_rigidbody;
-    [SerializeField] private UIHeartContainer m_heartContainer;
+    
+    [SerializeField] private GameObject[] m_colorParts;
+    [SerializeField] private GameObject[] m_colorShadowParts;
+    [SerializeField] private Color[] m_color;
 
     private bool m_isGround = true;
     private string Ground = "Ground";
@@ -34,6 +39,20 @@ public abstract class Character : MonoBehaviour
     {
         CheckGround();
     }
+
+    public void SetColor()
+    {
+        for(int i=0;i<m_colorParts.Length;i++)
+        {
+            m_colorParts[i].GetComponent<SpriteRenderer>().color = m_color[0];
+        }
+
+        for (int i = 0; i < m_colorShadowParts.Length; i++)
+        {
+            m_colorShadowParts[i].GetComponent<SpriteRenderer>().color = m_color[1];
+        }
+    }
+
     public virtual void Move(int _dir)
     {
         if (m_canMove == false || m_canAct == false)
@@ -97,6 +116,13 @@ public abstract class Character : MonoBehaviour
     public abstract void Command2();
 
     public abstract void Command3();
+
+    public void ResetActionTrigger()
+    {
+        m_animator.ResetTrigger("command1");
+        m_animator.ResetTrigger("command2");
+        m_animator.ResetTrigger("command3");
+    }
 
     public void SetCanActTrue()
     {
@@ -174,13 +200,6 @@ public abstract class Character : MonoBehaviour
             return false;
 
         return true; 
-    }
-
-    protected void ResetActionTrigger()
-    {
-        m_animator.ResetTrigger("command1");
-        m_animator.ResetTrigger("command2");
-        m_animator.ResetTrigger("command3");
     }
     #endregion
 

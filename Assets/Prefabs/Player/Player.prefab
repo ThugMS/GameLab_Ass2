@@ -2217,6 +2217,19 @@ MonoBehaviour:
   m_jumpPower: 12
   m_rigidbody: {fileID: 8932966110394495427}
   m_heartContainer: {fileID: 0}
+  m_colorParts:
+  - {fileID: 4676905833566559896}
+  m_colorShadowParts:
+  - {fileID: 6300255843191846221}
+  - {fileID: 4381605560205574306}
+  - {fileID: 8653088814482061687}
+  - {fileID: 6290245744219547467}
+  - {fileID: 8188765661165942780}
+  - {fileID: 9063931543190603084}
+  - {fileID: 4769244001026340442}
+  m_color:
+  - {r: 0.13725491, g: 0.40784317, b: 0.54901963, a: 1}
+  - {r: 0.03529412, g: 0.25490198, b: 0.38431376, a: 1}
   counterEffect: {fileID: 4015355647860865039}
 --- !u!1 &5368484599577314283
 GameObject:
