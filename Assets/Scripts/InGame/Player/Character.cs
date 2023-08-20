@@ -20,8 +20,8 @@ public abstract class Character : MonoBehaviour
     #endregion
 
     #region PrivateVariables
-    [SerializeField] private float m_speed = 10f;
-    [SerializeField] private float m_jumpPower = 7f;
+    [SerializeField] protected float m_speed = 10f;
+    [SerializeField] protected float m_jumpPower = 7f;
     [SerializeField] private Rigidbody2D m_rigidbody;
     [SerializeField] private UIHeartContainer m_heartContainer;
 
@@ -34,7 +34,7 @@ public abstract class Character : MonoBehaviour
     {
         CheckGround();
     }
-    public void Move(int _dir)
+    public virtual void Move(int _dir)
     {
         if (m_canMove == false || m_canAct == false)
             return;
@@ -63,12 +63,19 @@ public abstract class Character : MonoBehaviour
     {
         m_canAct = false;
 
-        m_rigidbody.velocity = _power * _direciton;
+        m_rigidbody.velocity = _power * _direciton / m_rigidbody.mass;
 
         m_animator.SetTrigger("Hit");
-        m_animator.ResetTrigger("command1");
-        m_animator.ResetTrigger("command2");
-        m_animator.ResetTrigger("command3");
+        ResetActionTrigger();
+    }
+
+    public void Stun()
+    {
+        m_canAct = false;
+        m_canMove = false;
+
+        m_animator.SetTrigger("Stun");
+        ResetActionTrigger();
     }
 
     public void Dead()
@@ -94,6 +101,11 @@ public abstract class Character : MonoBehaviour
     public void SetCanActTrue()
     {
         m_canAct = true;
+    }
+
+    public void SetCanMoveTrue()
+    {
+        m_canMove = true;
     }
 
     public  bool IsAnimationStateName(string name)
@@ -162,6 +174,13 @@ public abstract class Character : MonoBehaviour
             return false;
 
         return true; 
+    }
+
+    protected void ResetActionTrigger()
+    {
+        m_animator.ResetTrigger("command1");
+        m_animator.ResetTrigger("command2");
+        m_animator.ResetTrigger("command3");
     }
     #endregion
 
