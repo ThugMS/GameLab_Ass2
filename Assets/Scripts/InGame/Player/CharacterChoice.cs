@@ -120,5 +120,9 @@ public class CharacterChoice : MonoBehaviour
 
         return ++_index;
     }
+
+    private void ChoiceCharacter(){
+
+    }
     #endregion
 }

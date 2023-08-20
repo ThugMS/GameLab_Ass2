@@ -8,6 +8,8 @@ public abstract class Character : MonoBehaviour
     #region PublicVariables
     public bool m_isDead = false;
     public int m_life = 5;
+
+    public UIHeartContainer m_heartContainer;
     #endregion
 
     #region ProtectedVariables
@@ -23,7 +25,7 @@ public abstract class Character : MonoBehaviour
     [SerializeField] protected float m_speed = 10f;
     [SerializeField] protected float m_jumpPower = 7f;
     [SerializeField] private Rigidbody2D m_rigidbody;
-    [SerializeField] private UIHeartContainer m_heartContainer;
+    
     [SerializeField] private GameObject[] m_colorParts;
     [SerializeField] private GameObject[] m_colorShadowParts;
     [SerializeField] private Color[] m_color;

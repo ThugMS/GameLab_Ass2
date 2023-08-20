@@ -10,8 +10,8 @@ public class Indicator : MonoBehaviour
     #region PrivateVariables
 
     [SerializeField] Transform m_camera;
-    [SerializeField] Transform m_player1;
-    [SerializeField] Transform m_player2;
+    Transform m_player1;
+    Transform m_player2;
 
     [SerializeField] GameObject m_indicator1;
     [SerializeField] GameObject m_indicator2;
@@ -34,6 +34,9 @@ public class Indicator : MonoBehaviour
     #region PrivateMethod
     private void Update()
     {
+        m_player1 = PlayerManager.instance.m_player1.transform;
+        m_player2 = PlayerManager.instance.m_player2.transform;
+
         IndicatePlayer(m_player1, m_indicator1);
         IndicatePlayer(m_player2, m_indicator2);
     }
@@ -139,7 +142,7 @@ public class Indicator : MonoBehaviour
         else
             m_isActive = false;
 
-		#endregion
+		
 
 		GameObject dirObject = _indicator.transform.Find("direction").gameObject;
 
@@ -160,4 +163,5 @@ public class Indicator : MonoBehaviour
 		Quaternion rotation = Quaternion.Slerp(_indicatorDirection.transform.rotation, angleAxis, 5 * Time.deltaTime);
 		_indicatorDirection.transform.localRotation = rotation;
 	}
+    #endregion
 }

@@ -20,6 +20,7 @@ public abstract class MSStage : MonoBehaviour
     {
         m_stagePrefab.SetActive(true);
         MovePlayerStageInitialPos();
+        CameraController.instance.ChangePlayer();
     }
 
     public virtual void StageEnd()
@@ -32,6 +33,7 @@ public abstract class MSStage : MonoBehaviour
     protected void MovePlayerStageInitialPos()
     {
         PlayerManager.instance.MovePlayerPosition(m_player1InitialPos, m_player2InitialPos);
+        PlayerManager.instance.SetPlayerHeartUI();
     }
     #endregion
 }

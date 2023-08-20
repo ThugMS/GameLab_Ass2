@@ -15,8 +15,9 @@ public class PlayerManager : MonoBehaviour
 
     #region PrivateVariables
 
-
     [SerializeField] private List<TutorialButton> m_keyName = new List<TutorialButton>();
+    [SerializeField] private UIHeartContainer m_player1HeartUI;
+    [SerializeField] private UIHeartContainer m_player2HeartUI;
 
     private Character m_player1Controller;
     private Character m_player2Controller;
@@ -45,6 +46,12 @@ public class PlayerManager : MonoBehaviour
     {
         m_player1.transform.position = _pos1;
         m_player2.transform.position = _pos2;
+    }
+
+    public void SetPlayerHeartUI()
+    {
+        m_player1Controller.m_heartContainer = m_player1HeartUI;
+        m_player2Controller.m_heartContainer = m_player2HeartUI;
     }
 
     public void InitLife()
