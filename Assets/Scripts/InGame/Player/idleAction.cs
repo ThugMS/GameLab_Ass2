@@ -8,6 +8,7 @@ public class idleAction : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Character player = animator.transform.parent.GetComponent<Character>();
+        player.ResetActionTrigger();
         player.SetCanActTrue();
         player.SetCanMoveTrue();
     }

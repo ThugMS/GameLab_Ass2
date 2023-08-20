@@ -55,6 +55,11 @@ public class PlayerManager : MonoBehaviour
         m_player1Controller.m_isDead = false;
         m_player2Controller.m_isDead = false;
     }
+
+    public void SetPlayerColor()
+    {
+        m_player2.GetComponent<Character>().SetColor();
+    }
     #endregion
 
     #region PrivateMethod
