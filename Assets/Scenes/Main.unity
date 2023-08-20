@@ -1208,6 +1208,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09e24d6bdc37b75419bb44a4038fadba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &977607380
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4583399713235194418, guid: f480cdd25413d0740ae41313c8f44916, type: 3}
+      propertyPath: m_speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583399713235194418, guid: f480cdd25413d0740ae41313c8f44916, type: 3}
+      propertyPath: m_jumpPower
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583399713235194418, guid: f480cdd25413d0740ae41313c8f44916, type: 3}
+      propertyPath: m_heartContainer
+      value: 
+      objectReference: {fileID: 1199858080}
+    - target: {fileID: 5295662629142493850, guid: f480cdd25413d0740ae41313c8f44916, type: 3}
+      propertyPath: m_Name
+      value: SwordMaster
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459898235192267047, guid: f480cdd25413d0740ae41313c8f44916, type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459898235192267047, guid: f480cdd25413d0740ae41313c8f44916, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459898235192267047, guid: f480cdd25413d0740ae41313c8f44916, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459898235192267047, guid: f480cdd25413d0740ae41313c8f44916, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459898235192267047, guid: f480cdd25413d0740ae41313c8f44916, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459898235192267047, guid: f480cdd25413d0740ae41313c8f44916, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459898235192267047, guid: f480cdd25413d0740ae41313c8f44916, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459898235192267047, guid: f480cdd25413d0740ae41313c8f44916, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459898235192267047, guid: f480cdd25413d0740ae41313c8f44916, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459898235192267047, guid: f480cdd25413d0740ae41313c8f44916, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459898235192267047, guid: f480cdd25413d0740ae41313c8f44916, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f480cdd25413d0740ae41313c8f44916, type: 3}
 --- !u!4 &981641864 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6418065901734400762, guid: a5517c703510f0043bb04b1ff7666349, type: 3}
@@ -1382,6 +1451,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5517c703510f0043bb04b1ff7666349, type: 3}
+--- !u!1 &1286420633 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5295662629142493850, guid: f480cdd25413d0740ae41313c8f44916, type: 3}
+  m_PrefabInstance: {fileID: 977607380}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1298062201 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5864676508521073282, guid: c85fbcd638189e840bac9d440a1e2cb0, type: 3}
@@ -1503,17 +1577,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 190826d9fd38ecd4e94f26d3aef450be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1536118577 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2496289993865173491, guid: 67191fcec67e1de4cb2f18e2e2fcba1e, type: 3}
-  m_PrefabInstance: {fileID: 7989222151150222299}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77227b41598b76445a059a64405fab72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1568417043
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,18 +1636,6 @@ MonoBehaviour:
       - m_Target: {fileID: 2077320718}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: HideUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1536118577}
-        m_TargetAssemblyTypeName: TutorialRoom, Assembly-CSharp
-        m_MethodName: Initialize
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3348,6 +3399,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1959071358}
     - target: {fileID: 2496289993865173491, guid: 67191fcec67e1de4cb2f18e2e2fcba1e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2496289993865173491, guid: 67191fcec67e1de4cb2f18e2e2fcba1e, type: 3}
       propertyPath: m_stageTrigger
       value: 
       objectReference: {fileID: 981641865}
@@ -3479,6 +3534,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7989222151391804929, guid: 67191fcec67e1de4cb2f18e2e2fcba1e, type: 3}
+      propertyPath: m_player1
+      value: 
+      objectReference: {fileID: 1286420633}
     - target: {fileID: 7989222151669180648, guid: 67191fcec67e1de4cb2f18e2e2fcba1e, type: 3}
       propertyPath: m_IsActive
       value: 0
