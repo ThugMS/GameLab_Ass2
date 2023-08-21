@@ -10,6 +10,7 @@ public abstract class Character : MonoBehaviour
     public int m_life = 5;
 
     public UIHeartContainer m_heartContainer;
+    public CHARACTER_TYPE m_type;
     #endregion
 
     #region ProtectedVariables

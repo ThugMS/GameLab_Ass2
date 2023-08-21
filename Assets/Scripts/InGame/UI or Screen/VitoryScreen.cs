@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.TextCore.Text;
 
 public class VitoryScreen : MonoBehaviour
 {
@@ -10,12 +11,18 @@ public class VitoryScreen : MonoBehaviour
     #endregion
 
     #region PrivateVariables
-    [SerializeField] GameObject m_victoryPlayer1;
-    [SerializeField] GameObject m_victoryPlayer2;
-    [SerializeField] TextMeshPro m_textMeshPro;
+    [SerializeField] private GameObject[] m_characterList;
+    [SerializeField] private TextMeshPro m_textMeshPro;
 
-    public bool m_player1IsDead = false;
-    public bool m_player2IsDead = false;
+    private GameObject m_victoryObj;
+
+    private bool m_player1IsDead = false;
+    private bool m_player2IsDead = false;
+
+    private CHARACTER_TYPE m_characterType;
+    private Vector2 m_spawnPos = new Vector2 (0, -3);
+    private Vector2 m_scale = new Vector2(3, 3);
+
     #endregion
 
     #region PublicMethod
@@ -34,11 +41,18 @@ public class VitoryScreen : MonoBehaviour
 
         if (m_player1IsDead)
         {
-            m_victoryPlayer2.SetActive(true);
+            m_characterType = PlayerManager.instance.m_player2.GetComponent<Character>().m_type;
+            m_victoryObj = Instantiate(m_characterList[(int)m_characterType], m_spawnPos, Quaternion.identity);
+            m_victoryObj.transform.localScale = m_scale;
+            m_victoryObj.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            m_victoryObj.GetComponent<Character>().SetColor();
         }
         else if (m_player2IsDead)
         {
-            m_victoryPlayer1.SetActive(true);
+            m_characterType = PlayerManager.instance.m_player1.GetComponent<Character>().m_type;
+            m_victoryObj = Instantiate(m_characterList[(int)m_characterType], m_spawnPos, Quaternion.identity);
+            m_victoryObj.transform.localScale = m_scale;
+            m_victoryObj.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         }
 
         FillVictoryName();
@@ -46,8 +60,7 @@ public class VitoryScreen : MonoBehaviour
 
     public void HideVictoryPlayer()
     {
-        m_victoryPlayer1.SetActive(false);
-        m_victoryPlayer2.SetActive(false);
+        Destroy(m_victoryObj);
     }
 
     public void OnVictoryScreen()
