@@ -10,6 +10,7 @@ public enum CHARACTER_TYPE {
 public class CharacterChoice : MonoBehaviour
 {
     #region PublicVariables
+    public static CharacterChoice instance;
     #endregion
 
     #region PrivateVariables
@@ -61,21 +62,19 @@ public class CharacterChoice : MonoBehaviour
         }
     }
 
-    void OnEnable()
+    public void ShowCharactercreen()
     {
-        player1ChoicePanel();
-        player2ChoicePanel();
+        ShowCharacters();
     }
 
-    private void OnDisable()
+    public void HideCharacterScreen()
     {
-        m_player1Index = 0;
-        m_player2Index = 0;
+        HideCharacters();
     }
+
     public void player1ChoicePanel()
     {
-        if(m_obj1 != null)
-            Destroy(m_obj1);
+        DestroyPlayer(ref m_obj1);
 
         Vector2 pos = new Vector2(-5, -3);
         m_obj1 = Instantiate(m_characterList[m_player1Index], pos, Quaternion.identity);
@@ -89,8 +88,7 @@ public class CharacterChoice : MonoBehaviour
 
     public void player2ChoicePanel()
     {
-        if(m_obj2 != null)
-            Destroy(m_obj2);
+        DestroyPlayer(ref m_obj2);
 
         Vector2 pos = new Vector2(5, -3);
         m_obj2 = Instantiate(m_characterList[m_player2Index], pos, Quaternion.identity);
@@ -124,5 +122,23 @@ public class CharacterChoice : MonoBehaviour
     private void ChoiceCharacter(){
 
     }
+    private void ShowCharacters()
+    {
+        player1ChoicePanel();
+        player2ChoicePanel();
+    }
+
+    private void HideCharacters()
+    {
+        m_player1Index = 0;
+        m_player2Index = 0;
+    }
+
+    private void DestroyPlayer(ref GameObject _obj)
+    {
+        if (_obj != null)
+            Destroy(m_obj1);
+    }
+
     #endregion
 }

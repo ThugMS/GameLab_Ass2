@@ -6,6 +6,7 @@ using TMPro;
 public class MainScreen : MonoBehaviour
 {
     #region PublicVariables
+    public static MainScreen instance;
     #endregion
 
     #region PrivateVariables
@@ -23,10 +24,9 @@ public class MainScreen : MonoBehaviour
 
         if (Input.anyKeyDown)
         {
-            m_stagePanel.SetActive(true);    
+            GameManager.instance.OnCharacterChoiceScreen();
+            HideMainScreen();
         }
-
-
     }
     public void HideMainScreen()
     {
