@@ -183,7 +183,7 @@ public abstract class Character : MonoBehaviour
         {
             Vector3 randomPos = Vector3.zero;
             randomPos.x = Random.Range(-30, 30);
-            randomPos.y = 20;
+            randomPos.y = 30;
 
             if (FindPosition(randomPos) == true)
             {
@@ -193,7 +193,7 @@ public abstract class Character : MonoBehaviour
             }
         }
 
-        transform.position = new Vector2(0, 20);
+        transform.position = new Vector2(0, 30);
         m_rigidbody.velocity = Vector3.zero;
     }
 

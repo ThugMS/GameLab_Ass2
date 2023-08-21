@@ -2945,7 +2945,7 @@ MonoBehaviour:
   m_player: {fileID: 4583399713235194418}
   m_strongAttackPosA: {x: 3.47, y: 0.5}
   m_strongAttackPosB: {x: 0.63, y: -0.5}
-  m_dir: {x: 1, y: 0}
+  m_dir: {x: 1, y: 0, z: 0}
   power: 13
 --- !u!114 &6239627069655896515
 MonoBehaviour:
@@ -2961,7 +2961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_player: {fileID: 4583399713235194418}
   m_strongAttackPosA: {x: 4, y: 1.87}
-  m_strongAttackPosB: {x: 0.63, y: -0.5}
+  m_strongAttackPosB: {x: 0.63, y: -2}
   m_dir: {x: 2, y: 1}
   power: 1000
 --- !u!114 &6642178122087847884
