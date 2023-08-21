@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -29,7 +30,7 @@ public class PlayerManager : MonoBehaviour
         if (instance == null)
             instance = this;
     }
-    void Start()
+    public void GetPlayerInfo()
     {   
         m_player1Controller = m_player1.GetComponent<Character>();
         m_player2Controller = m_player2.GetComponent<Character>();
@@ -46,6 +47,9 @@ public class PlayerManager : MonoBehaviour
     {
         m_player1.transform.position = _pos1;
         m_player2.transform.position = _pos2;
+
+        m_player1.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        m_player2.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 
     public void SetPlayerHeartUI()
@@ -67,6 +71,12 @@ public class PlayerManager : MonoBehaviour
     {
         m_player2.GetComponent<Character>().SetColor();
     }
+    
+    public void StageEnd()
+    {
+        Destroy(m_player1);
+        Destroy(m_player2);
+    }
     #endregion
 
     #region PrivateMethod
@@ -76,6 +86,9 @@ public class PlayerManager : MonoBehaviour
         {
             return;
         }
+
+        if (m_player1 == null || m_player2 == null)
+            return;
 
         //Player1 Action
         if (Input.GetKey(KeyCode.A))

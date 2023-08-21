@@ -28,6 +28,11 @@ public class MainScreen : MonoBehaviour
             HideMainScreen();
         }
     }
+    private void OnEnable()
+    {
+        
+    }
+
     public void HideMainScreen()
     {
         gameObject.SetActive(false);
