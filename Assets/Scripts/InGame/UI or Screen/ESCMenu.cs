@@ -65,9 +65,7 @@ public class ESCMenu : MonoBehaviour
 
     public void StageButton()
     {
-        m_escPanel.SetActive(false);
-        isEsc = false;
-        m_stagePanel.SetActive(true);
+        GameManager.instance.ChangeCharacter();
     }
 #endregion
 

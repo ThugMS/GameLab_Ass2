@@ -33,7 +33,6 @@ public abstract class MSStage : MonoBehaviour
     protected void MovePlayerStageInitialPos()
     {
         PlayerManager.instance.MovePlayerPosition(m_player1InitialPos, m_player2InitialPos);
-        PlayerManager.instance.SetPlayerHeartUI();
     }
     #endregion
 }

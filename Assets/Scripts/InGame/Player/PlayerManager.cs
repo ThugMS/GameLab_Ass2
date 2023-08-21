@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -35,6 +36,8 @@ public class PlayerManager : MonoBehaviour
         m_player1Controller = m_player1.GetComponent<Character>();
         m_player2Controller = m_player2.GetComponent<Character>();
 
+        SetPlayerHeartUI();
+
         //AddTutorialKey(ref m_player1, 0, 7);
         //AddTutorialKey(ref m_player2, 7, 7);
     }
@@ -56,6 +59,11 @@ public class PlayerManager : MonoBehaviour
     {
         m_player1Controller.m_heartContainer = m_player1HeartUI;
         m_player2Controller.m_heartContainer = m_player2HeartUI;
+
+        Debug.Log("yes");
+
+        m_player1HeartUI.m_index = (int)m_player1Controller.m_type;
+        m_player2HeartUI.m_index = (int)m_player2Controller.m_type;
     }
 
     public void InitLife()
@@ -68,7 +76,8 @@ public class PlayerManager : MonoBehaviour
     }
 
     public void SetPlayerColor()
-    {
+    {  
+
         m_player2.GetComponent<Character>().SetColor();
     }
     
