@@ -17,7 +17,10 @@ public class GameManager : MonoBehaviour
 	public UnityEvent onCharacterScreen;
 	public UnityEvent offCharacterScreen;
 
-	public UnityEvent onVictoryScreen;
+	public UnityEvent onStageScreen;
+    public UnityEvent offStageScreen;
+
+    public UnityEvent onVictoryScreen;
     public UnityEvent offVictoryScreen;
     #endregion
 
@@ -63,6 +66,16 @@ public class GameManager : MonoBehaviour
 	{
         offCharacterScreen.Invoke();
     }
+
+	public void OnStageScreen()
+	{
+		onStageScreen.Invoke();
+	}
+
+	public void OffStageScreen()
+	{
+		offStageScreen.Invoke();
+	}
 
 	public void OnVictoryScreen()
 	{

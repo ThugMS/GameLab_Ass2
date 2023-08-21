@@ -16,63 +16,88 @@ public class CharacterChoice : MonoBehaviour
     #region PrivateVariables
     [SerializeField] GameObject[] m_characterList;
 
+    private bool m_isscreenOn = false;
+
     private int m_player1Index = 0;
     private int m_player2Index = 0;
     private int m_characterMaxIndex = 1;
+    private bool m_isPlayer1Selected = false;
+    private bool m_isPlayer2Selected = false;
+    private Vector2 m_spawnPos = new Vector2(100, 100);
 
     private GameObject m_obj1;
     private GameObject m_obj2;
     #endregion
 
     #region PublicMethod
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
     void Update()
     {
+        if (m_isscreenOn == false)
+            return;
+
         if (Input.GetKeyDown(KeyCode.A))
         {
             m_player1Index = IndexDown(m_player1Index);
-            player1ChoicePanel();
+            Player1ChoicePanel();
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
             m_player1Index = IndexUp(m_player1Index);
-            player1ChoicePanel();
+            Player1ChoicePanel();
         }
 
         if (Input.GetKeyDown(KeyCode.G))
         {
-            
+            Player1Choice();
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             m_player2Index = IndexDown(m_player2Index);
-            player2ChoicePanel();
+            Player2ChoicePanel();
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             m_player2Index = IndexUp(m_player2Index);
-            player2ChoicePanel();
+            Player2ChoicePanel();
         }
 
         if (Input.GetKeyDown(KeyCode.L))
         {
+            Player2Choice();
+        }
 
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (m_isPlayer1Selected == true && m_isPlayer2Selected == true)
+            {
+                Debug.Log("¿Ï·á");
+                CompleteChoicePlayer();
+            }
         }
     }
 
     public void ShowCharactercreen()
     {
         ShowCharacters();
+        m_isscreenOn = true;
+        gameObject.SetActive(true);
     }
 
     public void HideCharacterScreen()
     {
         HideCharacters();
+        m_isscreenOn = false;
+        gameObject.SetActive(false);
     }
 
-    public void player1ChoicePanel()
+    public void Player1ChoicePanel()
     {
         DestroyPlayer(ref m_obj1);
 
@@ -86,7 +111,7 @@ public class CharacterChoice : MonoBehaviour
         m_obj1.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
     }
 
-    public void player2ChoicePanel()
+    public void Player2ChoicePanel()
     {
         DestroyPlayer(ref m_obj2);
 
@@ -99,6 +124,18 @@ public class CharacterChoice : MonoBehaviour
         m_obj2.transform.GetComponent<Collider2D>().enabled = false;
         m_obj2.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         m_obj2.GetComponent<Character>().SetColor();
+    }
+
+    private void OnEnable()
+    {
+        m_isPlayer1Selected = false;
+        m_isPlayer2Selected = false;
+    }
+
+    private void OnDisable()
+    {
+        HideCharacters();
+        m_isscreenOn = false;
     }
     #endregion
 
@@ -122,10 +159,11 @@ public class CharacterChoice : MonoBehaviour
     private void ChoiceCharacter(){
 
     }
+
     private void ShowCharacters()
     {
-        player1ChoicePanel();
-        player2ChoicePanel();
+        Player1ChoicePanel();
+        Player2ChoicePanel();
     }
 
     private void HideCharacters()
@@ -137,8 +175,35 @@ public class CharacterChoice : MonoBehaviour
     private void DestroyPlayer(ref GameObject _obj)
     {
         if (_obj != null)
-            Destroy(m_obj1);
+            Destroy(_obj);
     }
 
+    private void Player1Choice()
+    {   
+        m_isPlayer1Selected = true;
+        GameObject obj = Instantiate(m_characterList[m_player1Index], m_spawnPos, Quaternion.identity);
+
+        PlayerManager.instance.m_player1 = obj;
+    }
+
+    private void Player2Choice()
+    {
+        m_isPlayer2Selected = true;
+        GameObject obj = Instantiate(m_characterList[m_player2Index], m_spawnPos, Quaternion.identity);
+
+        PlayerManager.instance.m_player2 = obj;
+        PlayerManager.instance.SetPlayerColor();
+    }
+
+    private void CompleteChoicePlayer()
+    {
+        PlayerManager.instance.GetPlayerInfo();
+        gameObject.SetActive(false);
+
+        DestroyPlayer(ref m_obj1);
+        DestroyPlayer(ref m_obj2);
+
+        GameManager.instance.OnStageScreen();
+    }
     #endregion
 }

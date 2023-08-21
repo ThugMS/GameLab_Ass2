@@ -15,6 +15,21 @@ public class StagePanel : MonoBehaviour
     #endregion
 
     #region PublicMethod
+    private void Start()
+    {
+        m_stagePanel.SetActive(false);
+    }
+
+    public void ShowPanel()
+    {
+        m_stagePanel.SetActive(true);
+    }
+
+    public void HidePanel()
+    {
+        m_stagePanel.SetActive(false);
+    }
+
     public void TutorialStage()
     {
         m_stageType = MSStageManager.StageType.tutorial;
