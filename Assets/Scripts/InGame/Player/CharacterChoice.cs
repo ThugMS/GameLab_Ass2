@@ -198,6 +198,7 @@ public class CharacterChoice : MonoBehaviour
     private void CompleteChoicePlayer()
     {
         PlayerManager.instance.GetPlayerInfo();
+       
         gameObject.SetActive(false);
 
         DestroyPlayer(ref m_obj1);

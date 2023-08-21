@@ -27,6 +27,7 @@ public class UIController : MonoBehaviour
 		foreach (UIHeartContainer ui in m_uiList)
 		{
 			ui.gameObject.SetActive(false);
+			ui.DeleteCharacterUI();
 		}
 		indicator.gameObject.SetActive(false);
 	}

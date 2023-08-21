@@ -24,7 +24,8 @@ public class UIDrawer : MonoBehaviour
 		if (m_main == null)
 			m_main = Camera.main;
 	}
-	public void LateUpdate()
+
+    public void LateUpdate()
 	{
 		Draw();
 	}

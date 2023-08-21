@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 	public UnityEvent onMainScreen;
     public UnityEvent offMainScreen;
 
+	public UnityEvent chagneCharacter;
+
 	public UnityEvent onCharacterScreen;
 	public UnityEvent offCharacterScreen;
 
@@ -66,6 +68,11 @@ public class GameManager : MonoBehaviour
 	{
         offCharacterScreen.Invoke();
     }
+
+	public void ChangeCharacter()
+	{
+		chagneCharacter.Invoke();
+	}
 
 	public void OnStageScreen()
 	{
