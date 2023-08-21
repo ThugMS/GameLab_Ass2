@@ -38,8 +38,8 @@ public class PlayerManager : MonoBehaviour
 
         SetPlayerHeartUI();
 
-        AddTutorialKey(ref m_player1, 0, 7);
-        AddTutorialKey(ref m_player2, 7, 7);
+        //AddTutorialKey(ref m_player1, 0, 7);
+        //AddTutorialKey(ref m_player2, 7, 7);
     }
     private void Update()
     {
@@ -96,7 +96,7 @@ public class PlayerManager : MonoBehaviour
             return;
         }
 
-        if (m_player1 == null || m_player2 == null)
+        if (m_player1Controller == null || m_player2Controller == null)
             return;
 
         //Player1 Action

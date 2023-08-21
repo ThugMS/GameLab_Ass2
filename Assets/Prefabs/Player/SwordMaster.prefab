@@ -2891,8 +2891,8 @@ MonoBehaviour:
   m_canAct: 1
   m_canJump: 1
   m_canAttack: 1
-  m_speed: 5
-  m_jumpPower: 15
+  m_speed: 6
+  m_jumpPower: 17
   m_rigidbody: {fileID: 8932966110394495427}
   m_colorParts:
   - {fileID: 4473034231687053050}

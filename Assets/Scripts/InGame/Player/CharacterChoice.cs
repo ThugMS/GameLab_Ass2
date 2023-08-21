@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public enum CHARACTER_TYPE {
@@ -15,6 +16,10 @@ public class CharacterChoice : MonoBehaviour
 
     #region PrivateVariables
     [SerializeField] GameObject[] m_characterList;
+
+    [SerializeField] GameObject m_player1SelectText;
+    [SerializeField] GameObject m_player2SelectText;
+    [SerializeField] GameObject m_pressEnter;
 
     private bool m_isscreenOn = false;
 
@@ -38,50 +43,63 @@ public class CharacterChoice : MonoBehaviour
     {
         if (m_isscreenOn == false)
             return;
-
-        if (Input.GetKeyDown(KeyCode.A))
+        
+        if(m_isPlayer1Selected == false)
         {
-            m_player1Index = IndexDown(m_player1Index);
-            Player1ChoicePanel();
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                m_player1Index = IndexDown(m_player1Index);
+                Player1ChoicePanel();
+            }
+
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                m_player1Index = IndexUp(m_player1Index);
+                Player1ChoicePanel();
+            }
+
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                Player1Choice();
+                m_player1SelectText.SetActive(true);
+            }
+        }
+            
+        if(m_isPlayer2Selected == false)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                m_player2Index = IndexDown(m_player2Index);
+                Player2ChoicePanel();
+            }
+
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                m_player2Index = IndexUp(m_player2Index);
+                Player2ChoicePanel();
+            }
+
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                Player2Choice();
+                m_player2SelectText.SetActive(true);
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            m_player1Index = IndexUp(m_player1Index);
-            Player1ChoicePanel();
-        }
 
-        if (Input.GetKeyDown(KeyCode.G))
+        if (m_isPlayer1Selected == true && m_isPlayer2Selected == true)
         {
-            Player1Choice();
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            m_player2Index = IndexDown(m_player2Index);
-            Player2ChoicePanel();
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            m_player2Index = IndexUp(m_player2Index);
-            Player2ChoicePanel();
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Player2Choice();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            if (m_isPlayer1Selected == true && m_isPlayer2Selected == true)
+            m_pressEnter.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 Debug.Log("¿Ï·á");
                 CompleteChoicePlayer();
+                
             }
         }
+        
     }
+
 
     public void ShowCharactercreen()
     {
@@ -104,7 +122,7 @@ public class CharacterChoice : MonoBehaviour
         Vector2 pos = new Vector2(-5, -3);
         m_obj1 = Instantiate(m_characterList[m_player1Index], pos, Quaternion.identity);
 
-        m_obj1.transform.localScale = new Vector2(m_obj1.transform.localScale.x * 2, m_obj1.transform.localScale.y * 2);
+        m_obj1.transform.localScale = new Vector2(m_obj1.transform.localScale.x * 3, m_obj1.transform.localScale.y * 3);
         m_obj1.transform.localScale = new Vector2(m_obj1.transform.localScale.x, m_obj1.transform.localScale.y);
 
         m_obj1.transform.GetComponent<Collider2D>().enabled = false;
@@ -118,7 +136,7 @@ public class CharacterChoice : MonoBehaviour
         Vector2 pos = new Vector2(5, -3);
         m_obj2 = Instantiate(m_characterList[m_player2Index], pos, Quaternion.identity);
 
-        m_obj2.transform.localScale = new Vector2(m_obj2.transform.localScale.x * 2, m_obj2.transform.localScale.y * 2);
+        m_obj2.transform.localScale = new Vector2(m_obj2.transform.localScale.x * 3, m_obj2.transform.localScale.y * 3);
         m_obj2.transform.localScale = new Vector2(m_obj2.transform.localScale.x * -1, m_obj2.transform.localScale.y);
 
         m_obj2.transform.GetComponent<Collider2D>().enabled = false;
@@ -136,6 +154,12 @@ public class CharacterChoice : MonoBehaviour
     {
         HideCharacters();
         m_isscreenOn = false;
+        m_isPlayer1Selected = false;
+        m_isPlayer2Selected = false;
+
+        m_player1SelectText.SetActive(false);
+        m_player2SelectText.SetActive(false);
+        m_pressEnter.SetActive(false);
     }
     #endregion
 

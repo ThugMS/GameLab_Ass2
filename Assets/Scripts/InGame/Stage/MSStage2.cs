@@ -10,7 +10,7 @@ public class MSStage2 : MSStage
     #region PrivateVariables
     [SerializeField] private Thunder m_thunder;
 
-    private float m_thunderCoolTime = 5.0f;
+    private float m_thunderCoolTime = 3.0f;
     private bool m_isReadyThunder = false;
     #endregion
 
