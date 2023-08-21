@@ -5,6 +5,7 @@ using UnityEngine;
 public class StagePanel : MonoBehaviour
 {
     #region PublicVariables
+    public static StagePanel instance;
     #endregion
 
     #region PrivateVariables

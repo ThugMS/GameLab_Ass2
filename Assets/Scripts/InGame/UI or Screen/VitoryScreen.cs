@@ -6,6 +6,7 @@ using TMPro;
 public class VitoryScreen : MonoBehaviour
 {
     #region PublicVariables
+    public static VitoryScreen instance;
     #endregion
 
     #region PrivateVariables

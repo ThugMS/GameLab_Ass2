@@ -10,8 +10,13 @@ public class GameManager : MonoBehaviour
 	public UnityEvent onGameTutorial;
 	public UnityEvent onGameStart;
 	public UnityEvent onGameEnd;
+
 	public UnityEvent onMainScreen;
     public UnityEvent offMainScreen;
+
+	public UnityEvent onCharacterScreen;
+	public UnityEvent offCharacterScreen;
+
 	public UnityEvent onVictoryScreen;
     public UnityEvent offVictoryScreen;
     #endregion
@@ -47,6 +52,16 @@ public class GameManager : MonoBehaviour
     public void OffMainScreen()
     {
         offMainScreen.Invoke();
+    }
+
+	public void OnCharacterChoiceScreen()
+	{
+		onCharacterScreen.Invoke();
+	}
+
+	public void OffCharacterChoiceScreen()
+	{
+        offCharacterScreen.Invoke();
     }
 
 	public void OnVictoryScreen()
