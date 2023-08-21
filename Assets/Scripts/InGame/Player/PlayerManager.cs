@@ -60,8 +60,6 @@ public class PlayerManager : MonoBehaviour
         m_player1Controller.m_heartContainer = m_player1HeartUI;
         m_player2Controller.m_heartContainer = m_player2HeartUI;
 
-        Debug.Log("yes");
-
         m_player1HeartUI.m_index = (int)m_player1Controller.m_type;
         m_player2HeartUI.m_index = (int)m_player2Controller.m_type;
     }
@@ -108,7 +106,7 @@ public class PlayerManager : MonoBehaviour
         {
             m_player1Controller.Move(1);
         }
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
             m_player1Controller.Jump();
         }
@@ -134,7 +132,7 @@ public class PlayerManager : MonoBehaviour
         {
             m_player2Controller.Move(1);
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             m_player2Controller.Jump();
         }

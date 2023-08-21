@@ -15,7 +15,7 @@ public class SwordMasterCommand2 : MonoBehaviour
     [SerializeField] private Vector2 m_strongAttackPosB = new Vector2(0.63f, -0.5f);
 
     [SerializeField] private Vector2 m_dir = Vector3.zero;
-    [SerializeField] private float power = 10f;
+    [SerializeField] private float power = 2000f;
 
     private float m_selfDirection;
     #endregion

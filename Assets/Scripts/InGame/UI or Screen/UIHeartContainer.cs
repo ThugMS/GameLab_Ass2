@@ -68,10 +68,6 @@ public class UIHeartContainer : MonoBehaviour
 
         m_obj.transform.localScale = new Vector3(m_obj.transform.localScale.x * m_dir, m_obj.transform.localScale.y, m_obj.transform.localScale.z);
 		m_obj.transform.position = m_pos + m_characterUIParent.transform.position;
-        Debug.Log(" 1  " + m_obj.transform.localScale);
-        
-	
-		Debug.Log(m_obj.transform.localScale);
  
 
         if (m_dir == -1)

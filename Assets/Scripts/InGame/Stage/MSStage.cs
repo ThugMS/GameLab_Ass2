@@ -12,20 +12,25 @@ public abstract class MSStage : MonoBehaviour
     #region ProtectedVariables
     [SerializeField] protected GameObject m_stagePrefab;
 
+    protected GameObject m_stageObj;
     protected bool m_isStageStart = false;
     #endregion
 
     #region PublicMethod
     public virtual void StageStart()
-    {
-        m_stagePrefab.SetActive(true);
+    {   
+        m_stageObj = Instantiate(m_stagePrefab, Vector3.zero, Quaternion.identity);
+        m_stageObj.SetActive(true);
+
+        //m_stagePrefab.SetActive(true);
         MovePlayerStageInitialPos();
         CameraController.instance.ChangePlayer();
     }
 
     public virtual void StageEnd()
     {
-        m_stagePrefab?.SetActive(false);
+        //m_stagePrefab?.SetActive(false);
+        Destroy(m_stageObj);
     }
     #endregion
 

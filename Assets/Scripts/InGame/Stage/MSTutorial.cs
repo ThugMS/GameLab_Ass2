@@ -13,9 +13,16 @@ public class MSTutorial : MSStage
     #region PublicMethod
     public override void StageStart()
     {
-        base.StageStart();
+        m_stagePrefab.SetActive(true);
+        MovePlayerStageInitialPos();
+        CameraController.instance.ChangePlayer();
 
         GameManager.instance.TutorialStart();
+    }
+
+    public override void StageEnd()
+    {
+        m_stagePrefab?.SetActive(false);
     }
     #endregion
 
