@@ -2884,6 +2884,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_isDead: 0
   m_life: 5
+  m_heartContainer: {fileID: 0}
+  m_type: 1
   m_animator: {fileID: 4499776349497693644}
   m_canMove: 1
   m_canAct: 1
@@ -2892,7 +2894,6 @@ MonoBehaviour:
   m_speed: 5
   m_jumpPower: 15
   m_rigidbody: {fileID: 8932966110394495427}
-  m_heartContainer: {fileID: 0}
   m_colorParts:
   - {fileID: 4473034231687053050}
   - {fileID: 8384735062214637593}

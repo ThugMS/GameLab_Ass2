@@ -1323,9 +1323,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StageMenu, Assembly-CSharp
-        m_MethodName: SpawnInTutorial
+      - m_Target: {fileID: 1959514299}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
+        m_MethodName: StageEnd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1750,6 +1750,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93dfc1e0826c94742a5cae886ca999e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1959514299 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7989222151391804929, guid: 67191fcec67e1de4cb2f18e2e2fcba1e, type: 3}
+  m_PrefabInstance: {fileID: 7989222151150222299}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b582eb039b003e144a5c102aa1de0d15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1960017505 stripped
@@ -2706,6 +2717,18 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 1088879869
       objectReference: {fileID: 0}
+    - target: {fileID: 5541614706065218416, guid: a66293aab9a08a04b99428ddf1f1f314, type: 3}
+      propertyPath: m_characterList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541614706065218416, guid: a66293aab9a08a04b99428ddf1f1f314, type: 3}
+      propertyPath: m_characterList.Array.data[0]
+      value: 
+      objectReference: {fileID: 5295662629142493850, guid: e629b16ad16c253409a1aae16aa08517, type: 3}
+    - target: {fileID: 5541614706065218416, guid: a66293aab9a08a04b99428ddf1f1f314, type: 3}
+      propertyPath: m_characterList.Array.data[1]
+      value: 
+      objectReference: {fileID: 5295662629142493850, guid: f480cdd25413d0740ae41313c8f44916, type: 3}
     - target: {fileID: 5541614706065218417, guid: a66293aab9a08a04b99428ddf1f1f314, type: 3}
       propertyPath: m_RootOrder
       value: 14
