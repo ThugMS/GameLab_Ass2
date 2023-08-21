@@ -2094,6 +2094,81 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  chagneCharacter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1230988813}
+        m_TargetAssemblyTypeName: MSStageManager, Assembly-CSharp
+        m_MethodName: StageEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1645112127}
+        m_TargetAssemblyTypeName: CharacterChoice, Assembly-CSharp
+        m_MethodName: ShowCharactercreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8314198716016649640}
+        m_TargetAssemblyTypeName: SnowController, Assembly-CSharp
+        m_MethodName: StopSnow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2077320718}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: HideUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1960017505}
+        m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
+        m_MethodName: PlayerChasingEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1959514299}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
+        m_MethodName: StageEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onCharacterScreen:
     m_PersistentCalls:
       m_Calls:
@@ -3062,6 +3137,10 @@ PrefabInstance:
     - target: {fileID: 491883433425146018, guid: 323ba6158737b06449bc0cd15521c50a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 491883433732358907, guid: 323ba6158737b06449bc0cd15521c50a, type: 3}
+      propertyPath: m_text
+      value: CHARACTER
       objectReference: {fileID: 0}
     - target: {fileID: 3911640525138809028, guid: 323ba6158737b06449bc0cd15521c50a, type: 3}
       propertyPath: m_Pivot.x

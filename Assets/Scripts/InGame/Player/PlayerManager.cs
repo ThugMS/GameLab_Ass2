@@ -38,8 +38,8 @@ public class PlayerManager : MonoBehaviour
 
         SetPlayerHeartUI();
 
-        //AddTutorialKey(ref m_player1, 0, 7);
-        //AddTutorialKey(ref m_player2, 7, 7);
+        AddTutorialKey(ref m_player1, 0, 7);
+        AddTutorialKey(ref m_player2, 7, 7);
     }
     private void Update()
     {
