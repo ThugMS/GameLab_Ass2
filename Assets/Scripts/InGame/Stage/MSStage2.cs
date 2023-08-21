@@ -8,10 +8,12 @@ public class MSStage2 : MSStage
     #endregion
 
     #region PrivateVariables
-    [SerializeField] private Thunder m_thunder;
+    [SerializeField] private Thunder[] m_thunderList;
+    [SerializeField] private GameObject m_thunderLight;
 
-    private float m_thunderCoolTime = 5.0f;
+    private float m_thunderCoolTime = 6f;
     private bool m_isReadyThunder = false;
+    
     #endregion
 
     #region PublicMethod
@@ -29,19 +31,40 @@ public class MSStage2 : MSStage
     {
         StartCoroutine(nameof(CheckCoolTime));
     }
+
+    public override void StageEnd()
+    {
+        base.StageEnd();
+        gameObject.SetActive(false);
+    }
+
+    public override void StageStart()
+    {   
+        gameObject.SetActive(true);
+        base.StageStart();
+    }
     #endregion
 
     #region PrivateMethod
     private void ShowThunder()
     {
-        m_thunder.ShowThunder();
+        for (int i = 0; i < m_thunderList.Length; i++)
+        {
+            m_thunderList[i].ShowThunder();
+        }
+            
     }
 
     private IEnumerator CheckCoolTime()
     {
-        yield return new WaitForSeconds(m_thunderCoolTime);
+        yield return new WaitForSeconds(m_thunderCoolTime - 1f);
+
+        m_thunderLight.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
 
         m_isReadyThunder = true;
+        m_thunderLight.SetActive(false);
     }
     #endregion
 }

@@ -14,7 +14,7 @@ public class SwordMasterCommand1 : MonoBehaviour
     [SerializeField] private Vector2 m_strongAttackPosA = new Vector2(4.0f, 1.87f);
     [SerializeField] private Vector2 m_strongAttackPosB = new Vector2(0.63f, -0.5f);
 
-    [SerializeField] private Vector2 m_dir = Vector3.zero;
+    [SerializeField] private Vector3 m_dir = Vector3.zero;
     [SerializeField] private float power = 10f;
 
     private float m_selfDirection;
@@ -46,11 +46,25 @@ public class SwordMasterCommand1 : MonoBehaviour
 
             if (hitPlayer != null)
             {
-                CameraController.instance.SmashShake();
+                if (hitPlayer.IsAnimationStateName("counter"))
+                {
+                    Knight knightPlayer;
+                    hitPlayer.TryGetComponent(out knightPlayer);
+                    knightPlayer.ShowCounterEffect();
 
-                ParticleManager.instance.CallParticle(ParticleManager.ParticleType.smash, transform.position + Vector3.right * m_selfDirection * 3, m_selfDirection);
+                    ParticleManager.instance.CallParticle(ParticleManager.ParticleType.hit, transform.position + Vector3.right * m_selfDirection * 3, m_selfDirection);
 
-                hitPlayer.Hit(new Vector2(m_selfDirection * m_dir.x, m_dir.y).normalized, power);
+                    m_player.Hit(new Vector2(-m_selfDirection, 0), power * 0.8f);
+                }
+                else
+                {
+                    CameraController.instance.SmashShake();
+
+                    ParticleManager.instance.CallParticle(ParticleManager.ParticleType.smash, transform.position + Vector3.right * m_selfDirection * 3, m_selfDirection);
+
+                    hitPlayer.Hit(new Vector2(m_selfDirection * m_dir.x, m_dir.y).normalized, power);
+                }
+                
             }
         }
     }

@@ -107,6 +107,10 @@ public abstract class Character : MonoBehaviour
             m_isDead = true;
             m_life = 5;
         }
+        float angle = Quaternion.FromToRotation(Vector3.up, CameraController.instance.transform.position - transform.position).eulerAngles.z;
+
+        ParticleManager.instance.CallParticleDeath(ParticleManager.ParticleType.death, transform.position, angle);
+        CameraController.instance.ThunderShake();
 
         if (m_heartContainer.PopAndReturnRevivalPossibility() == true)
            Revive();
@@ -179,7 +183,7 @@ public abstract class Character : MonoBehaviour
         {
             Vector3 randomPos = Vector3.zero;
             randomPos.x = Random.Range(-30, 30);
-            randomPos.y = 20;
+            randomPos.y = 30;
 
             if (FindPosition(randomPos) == true)
             {
@@ -189,7 +193,7 @@ public abstract class Character : MonoBehaviour
             }
         }
 
-        transform.position = new Vector2(0, 20);
+        transform.position = new Vector2(0, 30);
         m_rigidbody.velocity = Vector3.zero;
     }
 

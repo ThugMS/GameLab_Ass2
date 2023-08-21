@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class SwordMaster : Character
@@ -9,6 +8,8 @@ public class SwordMaster : Character
     #endregion
 
     #region PrivateVariables
+    private float m_command3CoolTime = 2.0f;
+    private bool m_canCommand3 = true;
     #endregion
 
     #region PublicMethod
@@ -48,16 +49,24 @@ public class SwordMaster : Character
 
     public override void Command3()
     {
-        if (m_canAct == false || m_canAttack == false)
+        if (m_canAct == false || m_canAttack == false || m_canCommand3 == false)
             return;
 
         m_canAct = false;
         m_animator.SetTrigger("command3");
+        StartCoroutine(nameof(CoolTimeCommand3));
     }
-
     #endregion
 
     #region PrivateMethod
+    IEnumerator CoolTimeCommand3()
+    {
+        m_canCommand3 = false;
+
+        yield return new WaitForSeconds(m_command3CoolTime);
+
+        m_canCommand3 = true;
+    }
     #endregion
 
 }

@@ -42,7 +42,6 @@ public class Thunder : MonoBehaviour
             }
         }
 
-
         m_thunerPos.y = m_thunderHeight;
 
         m_thunder.transform.position = m_thunerPos;

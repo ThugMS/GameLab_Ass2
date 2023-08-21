@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.VirtualTexturing;
 
 public class ESCMenu : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class ESCMenu : MonoBehaviour
     [SerializeField] private GameObject m_escPanel;
     [SerializeField] private GameObject m_stagePanel;
 
-    private bool isEsc = false;
+    public bool isEsc = false;
     #endregion
 
     #region PublicMethod
@@ -65,6 +66,9 @@ public class ESCMenu : MonoBehaviour
 
     public void StageButton()
     {
+        isEsc = !isEsc;
+        g_pause = !g_pause;
+        m_escPanel.SetActive(false);
         GameManager.instance.ChangeCharacter();
     }
 #endregion
