@@ -8,7 +8,7 @@ public class MSStage2 : MSStage
     #endregion
 
     #region PrivateVariables
-    [SerializeField] private Thunder m_thunder;
+    [SerializeField] private Thunder[] m_thunderList;
 
     private float m_thunderCoolTime = 3.0f;
     private bool m_isReadyThunder = false;
@@ -34,7 +34,11 @@ public class MSStage2 : MSStage
     #region PrivateMethod
     private void ShowThunder()
     {
-        m_thunder.ShowThunder();
+        for (int i = 0; i < m_thunderList.Length; i++)
+        {
+            m_thunderList[i].ShowThunder();
+        }
+            
     }
 
     private IEnumerator CheckCoolTime()

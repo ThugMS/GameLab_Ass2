@@ -92,7 +92,6 @@ public class CharacterChoice : MonoBehaviour
             m_pressEnter.SetActive(true);
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                Debug.Log("¿Ï·á");
                 CompleteChoicePlayer();
                 
             }

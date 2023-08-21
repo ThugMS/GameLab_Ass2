@@ -107,6 +107,10 @@ public abstract class Character : MonoBehaviour
             m_isDead = true;
             m_life = 5;
         }
+        float angle = Quaternion.FromToRotation(Vector3.up, CameraController.instance.transform.position - transform.position).eulerAngles.z;
+
+        ParticleManager.instance.CallParticleDeath(ParticleManager.ParticleType.death, transform.position, angle);
+        CameraController.instance.ThunderShake();
 
         if (m_heartContainer.PopAndReturnRevivalPossibility() == true)
            Revive();
